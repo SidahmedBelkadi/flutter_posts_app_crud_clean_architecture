@@ -8,9 +8,14 @@ class PostsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: appTheme,
+      debugShowCheckedModeBanner: false,
       home: const Scaffold(
         body: Center(
-          child: Text("Hello World, Posts App with clean architecture"),
+          child: Text(
+            "Hello World, Posts App with clean architecture",
+            style: TextStyle(fontSize: 32),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
