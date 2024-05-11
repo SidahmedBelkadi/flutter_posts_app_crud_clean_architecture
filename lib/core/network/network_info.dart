@@ -5,12 +5,15 @@ abstract class NetworkInfo {
 }
 
 class NetworkInfoImpl implements NetworkInfo {
+  final Connectivity connectivity;
+
+  NetworkInfoImpl({required this.connectivity});
   @override
-  Future<bool> get isConnected async => await _checkConnectivity();
+  Future<bool> get isConnected async => await _checkConnectivity(connectivity: connectivity);
 }
 
-_checkConnectivity() async {
-  final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
+_checkConnectivity({required Connectivity connectivity}) async {
+  final List<ConnectivityResult> connectivityResult = await (connectivity.checkConnectivity());
   if (connectivityResult.contains(ConnectivityResult.mobile) ||
       connectivityResult.contains(ConnectivityResult.wifi)) {
     return true;

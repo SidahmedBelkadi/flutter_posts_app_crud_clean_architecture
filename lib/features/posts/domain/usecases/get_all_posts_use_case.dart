@@ -7,6 +7,7 @@ class GetAllPostsUseCase {
   final PostsRepository repository;
 
   GetAllPostsUseCase({required this.repository});
+
   Future<Either<Failure, List<PostEntity>>> call() async {
     return await repository.getAllPosts();
   }
