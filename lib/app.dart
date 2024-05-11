@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posts_app/core/theme/app_theme.dart';
+import 'package:posts_app/features/posts/presentation/screens/home.dart';
 
 class PostsApp extends StatelessWidget {
   const PostsApp({super.key});
@@ -9,15 +10,7 @@ class PostsApp extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            "Hello World, Posts App with clean architecture",
-            style: TextStyle(fontSize: 32),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
+      home: const HomeScreen(),
     );
   }
 }

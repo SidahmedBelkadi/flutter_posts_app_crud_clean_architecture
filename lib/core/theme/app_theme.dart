@@ -24,6 +24,7 @@ final ThemeData appTheme = ThemeData(
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: primaryColor,
     foregroundColor: Colors.white,
+    elevation: 0,
   ),
 
   // Input Decoration Theme
@@ -31,7 +32,7 @@ final ThemeData appTheme = ThemeData(
     floatingLabelStyle: const TextStyle(color: primaryColor),
     iconColor: secondaryColor,
     focusedBorder: OutlineInputBorder(
-      borderSide: const BorderSide(color: secondaryColor),
+      borderSide: const BorderSide(color: Colors.blueAccent),
       borderRadius: BorderRadius.circular(8),
     ),
     border: OutlineInputBorder(
@@ -39,4 +40,5 @@ final ThemeData appTheme = ThemeData(
       borderRadius: BorderRadius.circular(8),
     ),
   ),
+  dialogTheme: const DialogTheme(backgroundColor: primaryColor),
 );

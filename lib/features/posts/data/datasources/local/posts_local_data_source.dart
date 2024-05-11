@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:posts_app/core/constants.dart/keys.dart';
+import 'package:posts_app/core/constants/keys.dart';
 import 'package:posts_app/core/error/exception.dart';
 import 'package:posts_app/features/posts/data/models/post.dart';
 import 'package:shared_preferences/shared_preferences.dart';
