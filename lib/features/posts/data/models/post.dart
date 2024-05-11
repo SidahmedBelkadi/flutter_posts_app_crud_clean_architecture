@@ -29,6 +29,13 @@ class PostModel extends PostEntity {
     };
   }
 
+  Map<String, dynamic> toMapWithoutId() {
+    return <String, dynamic>{
+      'title': title,
+      'content': content,
+    };
+  }
+
   factory PostModel.fromMap(Map<String, dynamic> map) {
     return PostModel(
       id: map['id'] as String,
@@ -38,9 +45,13 @@ class PostModel extends PostEntity {
   }
 
   String toJson() => json.encode(toMap());
+  String toJsonWithoutId() => json.encode(toMapWithoutId());
 
   factory PostModel.fromJson(String source) =>
       PostModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  PostModel.fromEntity({required PostEntity postEntity})
+      : this(id: postEntity.id, title: postEntity.title, content: postEntity.content);
 
   @override
   String toString() => 'PostModel(id: $id, title: $title, content: $content)';
