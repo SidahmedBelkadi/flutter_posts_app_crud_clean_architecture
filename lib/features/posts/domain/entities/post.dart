@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class PostEntity extends Equatable {
-  final String id;
+  final String? id;
   final String title;
   final String content;
 

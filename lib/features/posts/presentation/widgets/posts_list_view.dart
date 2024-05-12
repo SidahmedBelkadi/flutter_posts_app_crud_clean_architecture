@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:posts_app/core/utils/snackbar.dart';
-import 'package:posts_app/features/posts/presentation/cubits/posts/delete_post/delete_post_cubit.dart';
-import 'package:posts_app/features/posts/presentation/cubits/posts/get_posts/get_posts_cubit.dart';
+import '../../../../core/utils/toast.dart';
+import '../cubits/posts/delete_post/delete_post_cubit.dart';
+import '../cubits/posts/get_posts/get_posts_cubit.dart';
 
 import '../../domain/entities/post.dart';
 import 'delete_slidable_action.dart';
@@ -23,11 +23,11 @@ class PostsListView extends StatelessWidget {
       child: PostsList(posts: posts),
       listener: (BuildContext context, DeletePostState state) {
         if (state is DeletePostError) {
-          AppSnackbar.showErrorSnackBar(message: state.message, context: context);
+          AppToasts.showErrorToast(message: state.message, context: context);
         }
         if (state is DeletePostSuccess) {
           context.read<GetPostsCubit>().getAllPosts();
-          AppSnackbar.showSuccessSnackBar(message: state.message, context: context);
+          AppToasts.showSuccessToast(message: state.message, context: context);
         }
       },
     );
@@ -53,7 +53,7 @@ class PostsList extends StatelessWidget {
             const EditPostSlidableAction(),
             DeletePostSlidableAction(
               onPressed: () {
-                context.read<DeletePostCubit>().deletePost(postId: post.id);
+                context.read<DeletePostCubit>().deletePost(postId: post.id!);
                 Navigator.of(context).pop();
               },
             ),

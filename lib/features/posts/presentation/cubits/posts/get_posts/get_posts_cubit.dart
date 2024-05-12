@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import '../../../../../../core/helpers/failure_to_message.dart';
 import '../../../../domain/entities/post.dart';
 import '../../../../domain/usecases/get_all_posts_use_case.dart';

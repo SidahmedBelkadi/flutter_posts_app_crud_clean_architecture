@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
+
 import '../../../../core/error/exception.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/network/network_info.dart';
+import '../../domain/entities/post.dart';
+import '../../domain/repositories/post_repository.dart';
 import '../datasources/local/posts_local_data_source.dart';
 import '../datasources/remote/posts_remote_data_source.dart';
 import '../models/post.dart';
-import '../../domain/entities/post.dart';
-import '../../domain/repositories/post_repository.dart';
 
 class PostsRepositoryImpl implements PostsRepository {
   final PostsRemoteDataSource remoteDataSource;

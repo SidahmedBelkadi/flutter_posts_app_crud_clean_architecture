@@ -12,10 +12,7 @@ class PostsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: appTheme,
-      debugShowCheckedModeBanner: false,
-      home: MultiBlocProvider(
+    return MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (_) => service_locator.sl<GetPostsCubit>()..getAllPosts(),
@@ -24,8 +21,10 @@ class PostsApp extends StatelessWidget {
             create: (context) => service_locator.sl<DeletePostCubit>(),
           ),
         ],
-        child: const HomeScreen(),
-      ),
-    );
+        child: MaterialApp(
+          theme: darkAppTheme,
+          debugShowCheckedModeBanner: false,
+          home: const HomeScreen(),
+        ));
   }
 }

@@ -8,4 +8,5 @@ abstract class AppMessages {
   static const String unknownError = "An Error Has Occured.";
 
   static const String postDeleted = "Post has been deleted successfully.";
+  static const String postCreated = "Post has been created successfully.";
 }
