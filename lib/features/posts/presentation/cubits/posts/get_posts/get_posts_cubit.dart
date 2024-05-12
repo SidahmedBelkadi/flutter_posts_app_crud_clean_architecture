@@ -4,21 +4,21 @@ import 'package:posts_app/core/helpers/failure_to_message.dart';
 import 'package:posts_app/features/posts/domain/entities/post.dart';
 import 'package:posts_app/features/posts/domain/usecases/get_all_posts_use_case.dart';
 
-part 'posts_state.dart';
+part 'get_posts_state.dart';
 
-class PostsCubit extends Cubit<PostsState> {
+class GetPostsCubit extends Cubit<GetPostsState> {
   final GetAllPostsUseCase getAllPostsUseCase;
-  PostsCubit({required this.getAllPostsUseCase}) : super(PostsInitial());
+  GetPostsCubit({required this.getAllPostsUseCase}) : super(GetPostsInitial());
 
   getAllPosts() async {
-    emit(PostsLoading());
+    emit(GetPostsLoading());
 
     final failureOrPosts = await getAllPostsUseCase();
 
     failureOrPosts.fold((failure) {
-      emit(PostsError(message: FailureToMessage.convert(failure: failure)));
+      emit(GetPostsError(message: FailureToMessage.convert(failure: failure)));
     }, (posts) {
-      emit(PostsLoaded(posts: posts));
+      emit(GetPostsLoaded(posts: posts));
     });
   }
 }

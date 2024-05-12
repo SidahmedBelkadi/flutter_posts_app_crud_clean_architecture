@@ -30,7 +30,7 @@ class PostsLocalDataSourceImpl implements PostsLocalDataSource {
     final jsonString = sharedPreferences.getString(AppKeys.cachedPosts);
     if (jsonString != null) {
       final List decodedJsonData = json.decode(jsonString);
-      final posts = decodedJsonData.map<PostModel>((post) => PostModel.fromJson(post)).toList();
+      final posts = decodedJsonData.map<PostModel>((post) => PostModel.fromMap(post)).toList();
       return Future.value(posts);
     } else {
       throw CacheException();

@@ -7,14 +7,14 @@ import 'package:posts_app/features/posts/data/datasources/remote/posts_remote_da
 import 'package:posts_app/features/posts/data/repositories/posts_repository_impl.dart';
 import 'package:posts_app/features/posts/domain/repositories/post_repository.dart';
 import 'package:posts_app/features/posts/domain/usecases/get_all_posts_use_case.dart';
-import 'package:posts_app/features/posts/presentation/cubits/posts/posts_cubit.dart';
+import 'package:posts_app/features/posts/presentation/cubits/posts/get_posts/get_posts_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
   // ------ Blocs & Cubits -----
-  sl.registerFactory(() => PostsCubit(getAllPostsUseCase: sl()));
+  sl.registerFactory(() => GetPostsCubit(getAllPostsUseCase: sl()));
 
   // ------ UseCases -----
   sl.registerLazySingleton(() => GetAllPostsUseCase(repository: sl()));
@@ -23,11 +23,10 @@ Future<void> init() async {
   sl.registerLazySingleton<PostsRepository>(
       () => PostsRepositoryImpl(remoteDataSource: sl(), localDataSource: sl(), networkInfo: sl()));
 
-  // ------ Repositories -----
+  // ------ DataSources -----
   sl.registerLazySingleton<PostsLocalDataSource>(
       () => PostsLocalDataSourceImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<PostsRemoteDataSourceImpl>(
-      () => PostsRemoteDataSourceImpl(client: sl()));
+  sl.registerLazySingleton<PostsRemoteDataSource>(() => PostsRemoteDataSourceImpl(client: sl()));
 
   // ------ Core -----
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(connectivity: sl()));

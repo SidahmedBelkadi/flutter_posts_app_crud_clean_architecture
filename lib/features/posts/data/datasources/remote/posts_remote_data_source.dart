@@ -37,8 +37,8 @@ class PostsRemoteDataSourceImpl implements PostsRemoteDataSource {
     final response = await client.get(Uri.parse(kPostsEndpoint), headers: kHeaders);
 
     if (response.statusCode == 200) {
-      final List rawData = json.decode(response.body);
-      final List<PostModel> posts = rawData.map<PostModel>((e) => PostModel.fromJson(e)).toList();
+      final List<dynamic> rawData = json.decode(response.body);
+      final List<PostModel> posts = rawData.map<PostModel>((e) => PostModel.fromMap(e)).toList();
       return posts;
     } else {
       throw ServerException();

@@ -4,4 +4,6 @@ abstract class AppMessages {
   static const String cacheFailureMessage = "No Data Found.";
 
   static const String offlineFailureMessage = "Please check your internet connection ....";
+
+  static const String unknownError = "An Error Has Occured.";
 }

@@ -16,8 +16,8 @@ _checkConnectivity({required Connectivity connectivity}) async {
   final List<ConnectivityResult> connectivityResult = await (connectivity.checkConnectivity());
   if (connectivityResult.contains(ConnectivityResult.mobile) ||
       connectivityResult.contains(ConnectivityResult.wifi)) {
-    return true;
+    return Future.value(true);
   } else {
-    return false;
+    return Future.value(false);
   }
 }

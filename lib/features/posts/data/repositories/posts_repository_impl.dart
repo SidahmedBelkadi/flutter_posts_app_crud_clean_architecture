@@ -32,7 +32,7 @@ class PostsRepositoryImpl implements PostsRepository {
           final remotePosts = await remoteDataSource.getAllPosts();
           localDataSource.cachePosts(posts: remotePosts);
           return Right(remotePosts);
-        } catch (e) {
+        } on ServerException {
           return Left(ServerFailure());
         }
       },

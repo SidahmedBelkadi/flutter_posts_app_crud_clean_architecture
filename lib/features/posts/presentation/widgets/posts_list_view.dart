@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:posts_app/core/helpers/dialog.dart';
+import 'package:posts_app/features/posts/domain/entities/post.dart';
 import 'package:posts_app/features/posts/presentation/widgets/edit_post_form.dart';
 import 'package:posts_app/features/posts/presentation/widgets/post_item.dart';
 
 class PostsListView extends StatelessWidget {
+  final List<PostEntity> posts;
   const PostsListView({
     super.key,
+    required this.posts,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 12,
+      itemCount: posts.length,
       itemBuilder: (context, index) {
+        final PostEntity post = posts[index];
         return Slidable(
           endActionPane: ActionPane(motion: const StretchMotion(), children: [
             SlidableAction(
@@ -42,7 +46,7 @@ class PostsListView extends StatelessWidget {
               icon: Icons.delete,
             ),
           ]),
-          child: const PostItem(title: "test", content: "Content"),
+          child: PostItem(title: post.title, content: post.content),
         );
       },
       separatorBuilder: (__, _) => const Padding(

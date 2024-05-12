@@ -13,7 +13,6 @@ class PostItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
       title: Text(
         title,
         style: const TextStyle(fontSize: 28),
