@@ -7,7 +7,7 @@ import '../cubits/posts/get_posts/get_posts_cubit.dart';
 
 import '../../domain/entities/post.dart';
 import 'delete_slidable_action.dart';
-import 'edit_slidable_actiob.dart';
+import 'edit_slidable_action.dart';
 import 'post_item.dart';
 
 class PostsListView extends StatelessWidget {
@@ -50,7 +50,10 @@ class PostsList extends StatelessWidget {
         final PostEntity post = posts[index];
         return Slidable(
           endActionPane: ActionPane(motion: const StretchMotion(), children: [
-            const EditPostSlidableAction(),
+            EditPostSlidableAction(
+              onPressed: () {},
+              post: post,
+            ),
             DeletePostSlidableAction(
               onPressed: () {
                 context.read<DeletePostCubit>().deletePost(postId: post.id!);

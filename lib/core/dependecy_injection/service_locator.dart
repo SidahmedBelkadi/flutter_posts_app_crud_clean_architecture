@@ -1,6 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:posts_app/features/posts/domain/usecases/update_post_usecase.dart';
+import 'package:posts_app/features/posts/presentation/cubits/posts/edit_post/edit_post_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/posts/data/datasources/local/posts_local_data_source.dart';
@@ -22,11 +24,13 @@ Future<void> init() async {
   sl.registerFactory(() => GetPostsCubit(getAllPostsUseCase: sl()));
   sl.registerFactory(() => DeletePostCubit(deletePostsUseCase: sl()));
   sl.registerFactory(() => CreatePostCubit(addPostUseCase: sl()));
+  sl.registerFactory(() => EditPostCubit(updatePostUseCase: sl()));
 
   // ------ UseCases -----
   sl.registerLazySingleton(() => GetAllPostsUseCase(repository: sl()));
   sl.registerLazySingleton(() => DeletePostsUseCase(repository: sl()));
   sl.registerLazySingleton(() => AddPostUseCase(repository: sl()));
+  sl.registerLazySingleton(() => UpdatePostUseCase(repository: sl()));
 
   // ------ Repositories -----
   sl.registerLazySingleton<PostsRepository>(

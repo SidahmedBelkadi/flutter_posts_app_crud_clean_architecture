@@ -6,11 +6,14 @@ abstract class AppToasts {
     toastification.show(
       context: context,
       title: const Text('Yeaa!'),
-      description: Text(message),
+      description: Text(
+        message,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
       autoCloseDuration: const Duration(seconds: 5),
       showProgressBar: false,
-      type: ToastificationType.success,
-      style: ToastificationStyle.flat,
+      type: ToastificationType.info,
+      style: ToastificationStyle.fillColored,
     );
   }
 
@@ -18,11 +21,14 @@ abstract class AppToasts {
     toastification.show(
       context: context,
       title: const Text('Oops!'),
-      description: Text(message),
+      description: Text(
+        message,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
       autoCloseDuration: const Duration(seconds: 5),
       showProgressBar: false,
       type: ToastificationType.error,
-      style: ToastificationStyle.flat,
+      style: ToastificationStyle.fillColored,
     );
   }
 }

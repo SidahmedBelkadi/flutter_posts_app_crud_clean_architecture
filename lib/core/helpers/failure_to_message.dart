@@ -10,7 +10,7 @@ abstract class FailureToMessage {
     } else if (failure is OfflineFailure) {
       return AppMessages.offlineFailureMessage;
     } else {
-      return 'Unexpected error has occured, please try again later ...';
+      return 'Unexpected error has occured, please try again later';
     }
   }
 }

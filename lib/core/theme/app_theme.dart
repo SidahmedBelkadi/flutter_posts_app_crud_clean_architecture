@@ -42,9 +42,6 @@ final ThemeData darkAppTheme = ThemeData(
     ),
   ),
 
-  // Dialog
-  dialogTheme: const DialogTheme(backgroundColor: primaryColor),
-
   // Progress indicator
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.white),
 );
@@ -87,9 +84,6 @@ final ThemeData lightAppTheme = ThemeData(
       borderRadius: BorderRadius.circular(8),
     ),
   ),
-
-  // Dialog
-  dialogTheme: const DialogTheme(backgroundColor: primaryColor),
 
   // Progress indicator
   progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.grey),
