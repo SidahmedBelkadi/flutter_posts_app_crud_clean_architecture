@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:posts_app/core/common/cubits/theme/theme_cubit.dart';
+import 'package:posts_app/core/theme/app_theme.dart';
+import 'package:posts_app/core/theme/app_themes.dart';
 import '../../../../core/utils/toast.dart';
 import '../cubits/posts/create_post/create_post_cubit.dart';
 import '../widgets/custom_bottom_sheet.dart';
@@ -19,6 +22,34 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Posts"),
+      ),
+      drawer: Drawer(
+        child: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text("Dark Theme"),
+              const SizedBox(width: 10.0),
+              BlocBuilder<ThemeCubit, ThemeState>(
+                builder: (context, state) {
+                  if (state is ThemeLoaded) {
+                    return Switch(
+                      value: state.themeData == appThemeData[AppTheme.darkBlue],
+                      onChanged: (value) {
+                        if (value) {
+                          context.read<ThemeCubit>().changeTheme(index: 1);
+                        } else {
+                          context.read<ThemeCubit>().changeTheme(index: 0);
+                        }
+                      },
+                    );
+                  }
+                  return const LoadingWidget();
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
