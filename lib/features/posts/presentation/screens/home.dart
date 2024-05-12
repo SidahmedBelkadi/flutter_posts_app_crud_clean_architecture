@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:posts_app/core/utils/snackbar.dart';
 import '../../../../core/common/widgets/loading_widget.dart';
 import '../../../../core/common/widgets/simple_error_widget.dart';
 import '../../../../core/constants/messages.dart';
@@ -37,11 +38,8 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: BlocBuilder<GetPostsCubit, GetPostsState>(
+        child: BlocConsumer<GetPostsCubit, GetPostsState>(
           builder: (context, state) {
-            if (state is GetPostsError) {
-              return SimpleErrorWidget(message: state.message);
-            }
             if (state is GetPostsLoading) {
               return const LoadingWidget();
             }
@@ -53,6 +51,11 @@ class HomeScreen extends StatelessWidget {
             }
 
             return const SimpleErrorWidget(message: AppMessages.unknownError);
+          },
+          listener: (BuildContext context, GetPostsState state) {
+            if (state is GetPostsError) {
+              AppSnackbar.showErrorSnackBar(message: state.message, context: context);
+            }
           },
         ),
       ),

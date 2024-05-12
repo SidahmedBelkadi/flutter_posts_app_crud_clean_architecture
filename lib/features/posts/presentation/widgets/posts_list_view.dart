@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:posts_app/core/common/widgets/simple_error_widget.dart';
 import 'package:posts_app/core/utils/snackbar.dart';
 import 'package:posts_app/features/posts/presentation/cubits/posts/delete_post/delete_post_cubit.dart';
 import 'package:posts_app/features/posts/presentation/cubits/posts/get_posts/get_posts_cubit.dart';
@@ -20,14 +19,12 @@ class PostsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<DeletePostCubit, DeletePostState>(
-      builder: (context, state) {
-        if (state is DeletePostError) {
-          return SimpleErrorWidget(message: state.message);
-        }
-        return PostsList(posts: posts);
-      },
+    return BlocListener<DeletePostCubit, DeletePostState>(
+      child: PostsList(posts: posts),
       listener: (BuildContext context, DeletePostState state) {
+        if (state is DeletePostError) {
+          AppSnackbar.showErrorSnackBar(message: state.message, context: context);
+        }
         if (state is DeletePostSuccess) {
           context.read<GetPostsCubit>().getAllPosts();
           AppSnackbar.showSuccessSnackBar(message: state.message, context: context);
