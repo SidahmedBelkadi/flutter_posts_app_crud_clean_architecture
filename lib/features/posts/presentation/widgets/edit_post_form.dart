@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:posts_app/features/posts/presentation/widgets/custom_form_button.dart';
+import 'custom_form_button.dart';
 
 class EditPostForm extends StatefulWidget {
   const EditPostForm({super.key});

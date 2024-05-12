@@ -8,3 +8,23 @@ sealed class DeletePostState extends Equatable {
 }
 
 final class DeletePostInitial extends DeletePostState {}
+
+final class DeletePostLoading extends DeletePostState {}
+
+final class DeletePostError extends DeletePostState {
+  final String message;
+
+  const DeletePostError({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+final class DeletePostSuccess extends DeletePostState {
+  final String message;
+
+  const DeletePostSuccess({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}

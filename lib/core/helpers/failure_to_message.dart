@@ -1,5 +1,5 @@
-import 'package:posts_app/core/constants/messages.dart';
-import 'package:posts_app/core/error/failure.dart';
+import '../constants/messages.dart';
+import '../error/failure.dart';
 
 abstract class FailureToMessage {
   static String convert({required Failure failure}) {

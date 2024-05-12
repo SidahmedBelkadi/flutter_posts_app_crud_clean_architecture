@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:posts_app/core/error/failure.dart';
-import 'package:posts_app/features/posts/domain/entities/post.dart';
+import '../../../../core/error/failure.dart';
+import '../entities/post.dart';
 
 abstract class PostsRepository {
   Future<Either<Failure, Unit>> createPost({required PostEntity postEntity});

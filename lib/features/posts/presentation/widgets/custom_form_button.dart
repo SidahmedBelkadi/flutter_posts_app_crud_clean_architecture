@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:posts_app/core/theme/app_theme.dart';
+import '../../../../core/theme/app_theme.dart';
 
 class CutomFormButton extends StatelessWidget {
   const CutomFormButton({super.key});
